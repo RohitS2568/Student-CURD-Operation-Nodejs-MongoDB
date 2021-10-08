@@ -21,8 +21,8 @@ router.get('/',(req,res,next)=>{
   
 // get by id request
 router.get('/:id',(req,res,next)=>{
-console.log(req.params.id);
-Student.findById(req.params.id)
+console.log(req.student.id);
+Student.findById(req.student.id)
 .then(result=>{
     res.status(200).json({
         student:result
@@ -64,7 +64,7 @@ router.post('/',(req,res,next)=>{
 
 // delete request
 router.delete('/:id',(req,res,next)=>{
-    Student.remove({_id:req.params.id})
+    Student.remove({_id:req.student.id})
     .then(result=>{
        res.status(200).json({
            message:'Student Delete',
@@ -80,8 +80,8 @@ router.delete('/:id',(req,res,next)=>{
 
 // put request
 router.put('/:id',(req,res,next)=>{
-console.log(req.params.id);
-Student.findOneAndUpdate({_id:req.params.id},{
+console.log(req.student.id);
+Student.findOneAndUpdate({_id:req.students.id},{
     $set:{
        firstname: req.body.firstname,
        lastname:req.body.lastname,
